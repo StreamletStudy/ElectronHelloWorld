@@ -5,11 +5,29 @@
   "author": "Streamlet",
   "main": "main.js",
   "build": {
-    "appId": "helloworld"
+    "appId": "helloworld",
+    "artifactName": "${name}-${os}.${ext}",
+    "mac": {
+      "target": "dmg"
+    },
+    "dmg": {
+      "format": "UDBZ"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "target": "tar.xz"
+    }
   },
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder"
+    "dist": "electron-builder --publish=never"
   },
   "devDependencies": {
     "electron": "^10.1.1",
